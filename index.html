@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Nombres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 300px;
+            width: 100%;
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #error {
+            color: red;
+            display: none;
+        }
+        #welcomeMessage {
+            display: none;
+        }
+        h2 {
+            text-align: center;
+            color: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="nameSection">
+            <h2>Ingresa tu nombre</h2>
+            <input type="text" id="nameInput" placeholder="Nombre">
+            <button onclick="checkName()">Enviar</button>
+            <p id="error">Nombre no reconocido. Inténtalo de nuevo.</p>
+        </div>
+        <div id="welcomeMessage"></div>
+    </div>
+
+    <script>
+        const nameMessages = {
+            "Sheryl": " Desde que te fuiste, cada día es un recordatorio de lo mucho que te extraño. A veces siento que el tiempo se detuvo en aquellos momentos que pasamos juntos.... Cada canción, cada lugar, me recuerda a ti. Sé que quizás no sea lo que esperas escuchar, pero necesito que sepas que te llevo conmigo siempre. Te amo... ",
+            "Mariana": "Hoy, 13 de septiembre, no puedo evitar pensar en todo lo que hemos compartido hasta ahora. Aunque aún no tengamos un nombre claro para lo nuestro, lo que siento por ti es real. Cada momento juntos me hace querer conocerte más y ver hasta dónde podemos llegar.",
+            "Maryuri": "Hoy, 13 de septiembre, te queria agradecer por todo este tiempo que hemos pasado juntos... cada sonrisa, conversacion y por siempre hacerme entender que tengo que hacer las cosas bien, te agradesco por estar en mis momentos mas dificiles... por ejemplo en el campeonato.. tu ahí estuviste y nunca olvidare eso, se que aun no nos conocemos bien y quisiera seguir compartiendo momentos y lindos recuerdos con tigo.. gracias por todo y a este dia te lo dedico a ti♥."
+        };
+
+        function checkName() {
+            const nameInput = document.getElementById('nameInput');
+            const error = document.getElementById('error');
+            const nameSection = document.getElementById('nameSection');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+
+            const enteredName = nameInput.value.trim();
+            const message = nameMessages[enteredName];
+
+            if (message) {
+                nameSection.style.display = 'none';
+                welcomeMessage.innerHTML = `
+                    <h2>Eres mi "¡13 de septiembre 💗!"</h2>
+                    <p>${enteredName}, ${message}</p>
+                `;
+                welcomeMessage.style.display = 'block';
+            } else {
+                error.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
